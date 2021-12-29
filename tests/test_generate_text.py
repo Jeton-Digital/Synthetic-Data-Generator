@@ -80,6 +80,17 @@ def test_generate_random_sector(amount):
 
     assert len(sector_list) == amount, "Should be %s".format(amount)
 
+def test_generate_random_paragraph(amount):
+
+    paragraph_list = generate_text.generate_random_paragraph(amount = amount, min_sentence = 2, max_sentence = 5)
+    
+    assert len(paragraph_list) == amount, "Should be %s".format(amount)
+
+def test_generate_random_url(amount):
+
+    url_list = generate_text.generate_random_url(amount)
+
+    assert len(url_list) == amount, "Should be %s".format(amount)
 
 if __name__ == "__main__":
     test_generate_random_name(5)
@@ -94,4 +105,6 @@ if __name__ == "__main__":
     test_generate_random_industry(5)
     test_generate_random_sector(10)
     test_generate_random_industry(10)
+    test_generate_random_paragraph(3)
+    test_generate_random_url(5)
     print("Everything passed")

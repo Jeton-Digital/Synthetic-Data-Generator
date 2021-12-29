@@ -1,6 +1,6 @@
 import random
 
-def generate_random_date(amount, min_year=1930, max_year=2022):
+def generate_random_date(amount = 1, min_year=1930, max_year=2022):
 
     list_random_date = []
 
@@ -19,7 +19,7 @@ def generate_random_date(amount, min_year=1930, max_year=2022):
             else:
                 day = random.randint(1,30)
 
-        date = str(day) + "/" + str(month) + "/" + str(year)
+        date = str(year) + "-" + str(month) + "-" + str(day)
         list_random_date.append(date)
 
     return list_random_date
