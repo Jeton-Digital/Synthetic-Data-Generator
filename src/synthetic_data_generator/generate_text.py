@@ -2,9 +2,10 @@ from names import get_full_name
 import random
 from barnum import gen_data
 from faker import Faker
+import string
 
 
-def generate_random_name(amount):
+def generate_random_name(amount = 1):
     list_random_name = []
 
     for i in range(amount):
@@ -14,7 +15,7 @@ def generate_random_name(amount):
     return list_random_name
 
 
-def generate_random_company_name(amount):
+def generate_random_company_name(amount = 1):
 
     list_random_company = []
 
@@ -24,7 +25,7 @@ def generate_random_company_name(amount):
 
     return list_random_company
 
-def generate_random_address(amount):
+def generate_random_address(amount = 1):
 
     list_random_address = []
 
@@ -33,7 +34,7 @@ def generate_random_address(amount):
         zip_code, _, state = gen_data.create_city_state_zip()
         street = gen_data.create_street()
 
-        address =  " " + street + " " + state + " " + zip_code
+        address = street + " " + state + " " + zip_code
         list_random_address.append(address)
 
     # fake = Faker()
@@ -45,7 +46,7 @@ def generate_random_address(amount):
 
     return list_random_address
 
-def generate_random_email(amount, keywords = None):
+def generate_random_email(amount = 1, keywords = None):
 
     list_random_email = []
 
@@ -63,7 +64,7 @@ def generate_random_email(amount, keywords = None):
 
     return list_random_email
 
-def generate_random_website(amount, keywords = None):
+def generate_random_website(amount = 1, keywords = None):
 
     list_random_website = []
     if keywords:
@@ -83,7 +84,7 @@ def generate_random_website(amount, keywords = None):
 
     return list_random_website
 
-def generate_random_industry(amount, sector = None):
+def generate_random_industry(amount = 1, sector = None):
 
     dict_industry_sector = {
         'Technology' : ['Software', 'Hardware', 'Electronics', 'Graphics', 'Application', 'Virtual', 'Electronic', 'Data'],
@@ -116,7 +117,7 @@ def generate_random_industry(amount, sector = None):
 
     return list_random_industries
 
-def generate_random_sector(amount, keywords = None):
+def generate_random_sector(amount = 1, keywords = None):
     sectors = ['Telecom', 'Software', 'Hardware', 'Electronics', 'Research', 'Architecture', 'Building', 'Medicine',
     'Graphics', 'Analysis', 'Contract', 'Solutions', 'Internet', 'Application', 'Virtual', 'Network', 'Electronic', 'Data', 'Adventure']
 
@@ -139,7 +140,7 @@ def generate_random_sector(amount, keywords = None):
 
     return list_random_sector
 
-def generate_random_job_title(amount):
+def generate_random_job_title(amount = 1):
 
     list_random_job_title = []
     for i in range(amount):
@@ -148,7 +149,7 @@ def generate_random_job_title(amount):
 
     return list_random_job_title
 
-def generate_random_region(amount):
+def generate_random_region(amount = 1):
 
     list_random_region = []
 
@@ -158,14 +159,14 @@ def generate_random_region(amount):
     
     return list_random_region
 
-def generate_random_country(amount, region_list = None):
+def generate_random_country(amount = 1, region_list = None):
 
     countries_by_region = {
         'EU' : ["Andorra", "Albania", "Armenia", "Austria", "Bosnia and Herzegovina", "Belgium", "Bulgaria", "Belarus", "Switzerland", "Cyprus", "Czech Republic", "Germany", "Denmark", "Estonia", "Spain", "Finland", "Faroe Islands", "France", "France, Metropolitan" , "United Kingdom", "Georgia"],
         'US' : ["Antigua and Barbuda", "Anguilla", "Barbados", "Bermuda", "Brazil", "Canada", "Colombia", "United States"],
         'AS' : ["Afghanistan", "Antarctica", "Australia", "Azerbaijan", "Bangladesh", "Vietnam", "Vanuatu"] 
     }
-
+    
     list_random_country = []
     if region_list:
         for i in range(amount):
@@ -182,7 +183,7 @@ def generate_random_country(amount, region_list = None):
 
     return list_random_country
 
-def generate_random_phone_number(amount):
+def generate_random_phone_number(amount = 1):
 
     list_random_phone_number = []
     faker = Faker()
@@ -192,6 +193,31 @@ def generate_random_phone_number(amount):
         list_random_phone_number.append(phone_number)
     
     return list_random_phone_number
+
+def generate_random_paragraph(amount = 1, paragraph_num = 1, min_sentence = 1, max_sentence = 2):
+
+    list_random_paragraph = []
+
+    for i in range(amount):
+        paragraph = gen_data.create_paragraphs(paragraph_num, min_sentence, max_sentence)
+        list_random_paragraph.append(paragraph)
+
+    return list_random_paragraph
+
+
+def generate_random_url(amount = 1):
+
+    list_random_url = []
+
+    faker = Faker()
+    for i in range(amount):
+        url = faker.hostname() + "/"
+        num_chars = random.randint(5,15)
+        url += "".join(random.choices(string.ascii_letters + string.digits, k = num_chars))
+
+        list_random_url.append(url)
+
+    return list_random_url
 
 
         
