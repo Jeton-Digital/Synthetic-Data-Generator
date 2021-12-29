@@ -128,8 +128,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# virtualenv
-env-syn
+# ignore virtual environments
+env-syn/
+env-test-syn/
 
 # dist for PyPi
 dist/
+
+# ignore tests-pypi folder
+tests-pypi/
