@@ -130,3 +130,6 @@ dmypy.json
 
 # virtualenv
 env-syn
+
+# dist for PyPi
+dist/
